@@ -9,4 +9,5 @@
     <string name="add_notes_description">Description</string>
     <string name="add_notes_button">Submit</string>
     <string name="add_note_heading">Add Note</string>
+    <string name="splash_text_view">ToDo App</string>
 </resources>
