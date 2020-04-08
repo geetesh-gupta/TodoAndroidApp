@@ -25,16 +25,11 @@ public class NotesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        bindView();
 
         Intent intent = getIntent();
         fullName = intent.getStringExtra(AppConstant.FULL_NAME);
         userName = intent.getStringExtra(AppConstant.USER_NAME);
-
-        getSupportActionBar().setTitle(fullName);
-
-        fabAddNotes = findViewById(R.id.fabAddNotes);
-        title = findViewById(R.id.textViewTitle);
-        desc= findViewById(R.id.textViewDescription);
 
         fabAddNotes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +38,13 @@ public class NotesActivity extends AppCompatActivity {
             }
         });
 
+        getSupportActionBar().setTitle(fullName);
+    }
+
+    private void bindView(){
+        fabAddNotes = findViewById(R.id.fabAddNotes);
+        title = findViewById(R.id.textViewTitle);
+        desc= findViewById(R.id.textViewDescription);
     }
 
     private void setupDialogBox() {
