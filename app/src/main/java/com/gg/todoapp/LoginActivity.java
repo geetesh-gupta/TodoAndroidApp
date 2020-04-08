@@ -42,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra(AppConstant.USER_NAME, userName);
                     startActivity(intent);
                     saveLoginStatus();
+                    saveFullName(fullName);
+                    saveUserName(userName);
                 }else{
                     Toast.makeText(LoginActivity.this, "FullName and UserName can't be empty", Toast.LENGTH_SHORT).show();
                 }
@@ -51,7 +53,22 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(clickAction);
     }
 
+    private void saveFullName(String fullName) {
+        Log.d("CheckLogin", "LoginActivity FullName set");
+        editor = sharedPreferences.edit();
+        editor.putString(PrefConstant.FULL_NAME, fullName);
+        editor.apply();
+    }
+
+    private void saveUserName(String userName) {
+        Log.d("CheckLogin", "LoginActivity Username set");
+        editor = sharedPreferences.edit();
+        editor.putString(PrefConstant.USER_NAME, userName);
+        editor.apply();
+    }
+
     private void saveLoginStatus() {
+        Log.d("CheckLogin", "LoginActivity Login Status set");
         editor = sharedPreferences.edit();
         editor.putBoolean(PrefConstant.IS_LOGGED_IN, true);
         editor.apply();
