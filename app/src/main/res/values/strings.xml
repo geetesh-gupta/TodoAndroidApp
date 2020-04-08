@@ -5,4 +5,8 @@
     <string name="full_name">Full Name</string>
     <string name="user_name">User Name</string>
     <string name="login">Login</string>
+    <string name="add_notes_title">Title</string>
+    <string name="add_notes_description">Description</string>
+    <string name="add_notes_button">Submit</string>
+    <string name="add_note_heading">Add Note</string>
 </resources>
