@@ -4,7 +4,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -20,11 +22,13 @@ public class NotesActivity extends AppCompatActivity {
     FloatingActionButton fabAddNotes;
     TextView title;
     TextView desc;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        setupPreferences();
         bindView();
         getIntentData();
 
@@ -48,6 +52,12 @@ public class NotesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         fullName = intent.getStringExtra(AppConstant.FULL_NAME);
         userName = intent.getStringExtra(AppConstant.USER_NAME);
+        if (TextUtils.isEmpty(fullName)) {
+            fullName = sharedPreferences.getString(PrefConstant.FULL_NAME, "");
+        }
+        if (TextUtils.isEmpty(userName)){
+            userName = sharedPreferences.getString(PrefConstant.USER_NAME, "");
+        }
     }
 
     private void setupDialogBox() {
@@ -70,6 +80,9 @@ public class NotesActivity extends AppCompatActivity {
                 dialog.hide();
             }
         });
+    }
 
+    private void setupPreferences(){
+        sharedPreferences = getSharedPreferences(PrefConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE);
     }
 }
