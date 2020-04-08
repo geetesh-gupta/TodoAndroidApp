@@ -3,6 +3,7 @@ package com.gg.todoapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,11 +16,13 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText editTextFullName, editTextUserName;
     Button buttonLogin;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setupPreferences();
 
         editTextFullName = findViewById(R.id.editTextFullName);
         editTextUserName = findViewById(R.id.editTextUserName);
@@ -44,5 +47,10 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         buttonLogin.setOnClickListener(clickAction);
+    }
+
+
+    private void setupPreferences(){
+        sharedPreferences = getSharedPreferences(PrefConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE);
     }
 }
