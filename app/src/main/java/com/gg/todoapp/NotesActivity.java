@@ -26,10 +26,7 @@ public class NotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
         bindView();
-
-        Intent intent = getIntent();
-        fullName = intent.getStringExtra(AppConstant.FULL_NAME);
-        userName = intent.getStringExtra(AppConstant.USER_NAME);
+        getIntentData();
 
         fabAddNotes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +42,12 @@ public class NotesActivity extends AppCompatActivity {
         fabAddNotes = findViewById(R.id.fabAddNotes);
         title = findViewById(R.id.textViewTitle);
         desc= findViewById(R.id.textViewDescription);
+    }
+
+    private void getIntentData(){
+        Intent intent = getIntent();
+        fullName = intent.getStringExtra(AppConstant.FULL_NAME);
+        userName = intent.getStringExtra(AppConstant.USER_NAME);
     }
 
     private void setupDialogBox() {
