@@ -2,4 +2,7 @@
     <string name="app_name">Todo App</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
+    <string name="full_name">Full Name</string>
+    <string name="user_name">User Name</string>
+    <string name="login">Login</string>
 </resources>
