@@ -17,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText editTextFullName, editTextUserName;
     Button buttonLogin;
     SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra(AppConstant.FULL_NAME, fullName);
                     intent.putExtra(AppConstant.USER_NAME, userName);
                     startActivity(intent);
+                    saveLoginStatus();
                 }else{
                     Toast.makeText(LoginActivity.this, "FullName and UserName can't be empty", Toast.LENGTH_SHORT).show();
                 }
@@ -49,6 +51,11 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(clickAction);
     }
 
+    private void saveLoginStatus() {
+        editor = sharedPreferences.edit();
+        editor.putBoolean(PrefConstant.IS_LOGGED_IN, true);
+        editor.apply();
+    }
 
     private void setupPreferences(){
         sharedPreferences = getSharedPreferences(PrefConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE);
